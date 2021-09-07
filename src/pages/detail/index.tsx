@@ -1,31 +1,32 @@
-import Taro from "@tarojs/taro";
 import { Component } from 'react'
 import { View, Text } from '@tarojs/components'
-import './index.less'
-
+//import './index.less'
 
 export default class Index extends Component {
-
+  state = {
+    time : ''
+  }
   componentWillMount () { }
 
-  componentDidMount () { }
+  componentDidMount () {
+    let time = new Date().getTime();
+    this.setState({
+      time
+    })
+  }
 
   componentWillUnmount () { }
 
   componentDidShow () { }
 
   componentDidHide () { }
-  changeToDetail(){
-    Taro.navigateTo({url:"/pages/detail/index"})
-  }
+
   render () {
+    let {time} = this.state
     return (
       <View className='index'>
-        <Text>跳转测试页1</Text>
-        <View onClick={() => {
-          this.changeToDetail()
-        }}
-        >点击我跳转到详情页</View>
+        <Text>我是详情页</Text>
+        <View>{time}</View>
       </View>
     )
   }
